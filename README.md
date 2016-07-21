@@ -8,4 +8,7 @@ The simple IRC bot flamework
   * or Simply do somethings
 * Send messages by receiving cURL
 
-
+## Requirement
+* Python 3.5
+* Python library show below:
+  * irc
