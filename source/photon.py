@@ -1,22 +1,39 @@
+# -- Libraries --
 import http.server
+
 import irc.bot
 import irc.client
 from jaraco.stream import buffer
 
+from configparser import ConfigParser
+
 
 class Photon(irc.bot.SingleServerIRCBot):
-    pass
+    def __init__(self, server, channel, port, nickname):
+        irc.bot.SingleServerIRCBot.__init__(self, [(server, port)], nickname, nickname)
+        self.channel = channel
+
+
+def read_config():
+    parser = ConfigParser()
+    parser.read('conf/default.conf') 
+    return parser
 
 
 def main():
-    
+    config = read_config()
+
     # set encoding
-    client.ServerConnection.buffer_class.encoding = 
+    irc.client.ServerConnection.buffer_class.encoding = config.get('IRC', 'encoding')
 
     # connect to IRC server
-    bot = Photon()
+    server    = config.get('IRC', 'server_name')
+    channel   = config.get('IRC', 'channel_name')
+    port      = config.getint('IRC', 'port')
+    nick_name = config.get('IRC', 'nick_name')
+    bot = Photon(server, channel, port, nick_name)
     bot.start()
 
 
 if __name__ == "__main__":
-        main()
+    main()
