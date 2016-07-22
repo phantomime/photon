@@ -13,6 +13,12 @@ class Photon(irc.bot.SingleServerIRCBot):
         irc.bot.SingleServerIRCBot.__init__(self, [(server, port)], nickname, nickname)
         self.channel = channel
 
+    def on_nicknameinuse(self, c, e):
+        c.nick(c.get_nickname() + "_")
+
+    def on_welcome(self, c, e):
+        c.join(self.channel)
+
 
 def read_config():
     parser = ConfigParser()
