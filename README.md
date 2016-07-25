@@ -1,14 +1,15 @@
 # photon
 The simple but configurable IRC bot flamework
-(This project is WIP so it does not work well.)
+
+(This project is WIP so it does work just a little.)
 
 
 ## Features
-* React something to particular message
+* React something to member's message
   * Replay with fixed strings
-  * Send message with the result of some jobs
+  * Send message with the result of some commands
   * or Simply do somethings
-  * Any Reaction will be defined by writing YAML
+  * Any Reaction will be defined by writing YAML(brain.yml)
 * Send messages by receiving cURL
 
 
@@ -16,12 +17,12 @@ The simple but configurable IRC bot flamework
 * Python 3.5
 * Python library show below:
   * irc
+  * pyyaml
 * Gentle Mind
 
 
 ## instlation
 * Clone this repository
-    git clone https://github.com/phantomime/photon.git
+      `git clone https://github.com/phantomime/photon.git`
 * Enloy!
 
-Docker image may be going to be destribured...
