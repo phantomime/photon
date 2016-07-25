@@ -1,0 +1,14 @@
+- keyword: おはよう
+  reaction:
+    type: say
+    do: 黙れ
+
+- keyword: 時間は
+  reaction:
+    type: cmd
+    do: date
+
+- keyword: 今日も一日
+  reaction:
+    type: cmd
+    do: python3 scripts/ganbalzoi.py
