@@ -7,23 +7,27 @@ import importlib
 import yaml
 import re
 import subprocess
+from message import Message
 
 
 # do reaction from the received strings
-def proc_brain(string):
+def proc_brain(name, text):
     brain = load_brain()
     for b in brain:
-        if re.match(b['keyword'], string):
+        if re.match(b['keyword'], text):
             reaction = b['reaction']
 
             # judge what kind of reaction should be done
             if reaction['type'] == 'say':
-                return reaction['do']
+                return Message(None, reaction['do'])
             elif reaction['type'] == 'cmd':
-                return _do_command(reaction['do'])
+                return Message(None, _do_command(reaction['do']))
+            elif reaction['type'] == 'reply':
+                return Message(name, reaction['do'])
 
     # return None if no keyword matched to the received string
     return None
+
 
 # do Shell Commnad and return STDOUT
 def _do_command(command):

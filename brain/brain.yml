@@ -12,3 +12,8 @@
   reaction:
     type: cmd
     do: python3 scripts/ganbalzoi.py
+
+- keyword: .*クソ.*
+  reaction:
+    type: reply
+    do: "お前がクソ :poop:"
